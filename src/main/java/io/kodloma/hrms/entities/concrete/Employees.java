@@ -9,18 +9,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "employers")
-public class Employers extends User {
-    @Column(name = "companyname")
-    private String company_name;
-    @Column(name = "webadress")
-    private String web_adress;
-    @Column(name = "phonenumber")
-    private String phone_number;
+@Table(name = "employees")
+public class Employees extends User {
+    @Column(name = "firstname")
+    private String first_name;
+    @Column(name = "lastname")
+    private String last_name;
 }

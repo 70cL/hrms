@@ -1,6 +1,8 @@
 package io.kodloma.hrms.business.concrete;
 
 import io.kodloma.hrms.business.abtracts.JobPositionsService;
+import io.kodloma.hrms.core.DataResult;
+import io.kodloma.hrms.core.SuccessDataResult;
 import io.kodloma.hrms.dataAccessLayer.abstracts.JobPositionDao;
 import io.kodloma.hrms.entities.concrete.JobPositions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,8 @@ public class JobPositionsManager implements JobPositionsService {
     }
 
     @Override
-    public List<JobPositions> getAll() {
-        return jobPositionDao.findAll();
+    public DataResult<List<JobPositions>> getAll() {
+        return new SuccessDataResult<>("Başarılı",jobPositionDao.findAll());
     }
 
     @Override

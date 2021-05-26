@@ -1,46 +1,26 @@
 package io.kodloma.hrms.entities.concrete;
 
+import com.sun.istack.NotNull;
 import io.kodloma.hrms.entities.abstracts.IEntity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.lang.NonNull;
 
+import javax.persistence.*;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
+@Table(name = "users")
 public class User implements IEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+    @Column(name = "email")
     private String mail;
+    @Column(name = "password")
     private String password;
-
-    public User(){
-    }
-
-    public User(int id, String mail, String password)
-    {
-        this.id = id;
-        this.mail = mail;
-        this.password = password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public User setId(int id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public User setMail(String mail) {
-        this.mail = mail;
-        return this;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public User setPassword(String password) {
-        this.password = password;
-        return this;
-    }
 }
