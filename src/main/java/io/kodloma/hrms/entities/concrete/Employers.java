@@ -5,9 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @EqualsAndHashCode(callSuper = true)
@@ -16,6 +14,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "employers")
+@PrimaryKeyJoinColumn(name = "id")
 public class Employers extends User {
     @Column(name = "companyname")
     private String company_name;
@@ -23,4 +22,5 @@ public class Employers extends User {
     private String web_adress;
     @Column(name = "phonenumber")
     private String phone_number;
+
 }

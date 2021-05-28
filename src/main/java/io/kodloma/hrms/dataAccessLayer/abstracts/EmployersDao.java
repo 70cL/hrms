@@ -4,4 +4,5 @@ import io.kodloma.hrms.entities.concrete.Employers;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmployersDao extends JpaRepository<Employers, Integer> {
+    Employers findByMail(String email);
 }

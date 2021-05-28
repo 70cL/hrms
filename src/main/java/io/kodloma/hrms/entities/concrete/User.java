@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements IEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +24,5 @@ public class User implements IEntity {
     private String mail;
     @Column(name = "password")
     private String password;
+
 }

@@ -1,14 +1,12 @@
 package io.kodloma.hrms.controller;
 
+import com.sun.istack.NotNull;
 import io.kodloma.hrms.business.abtracts.JobPositionsService;
 import io.kodloma.hrms.core.DataResult;
 import io.kodloma.hrms.core.Result;
 import io.kodloma.hrms.entities.concrete.JobPositions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,6 +31,12 @@ public class JobPositionController {
     public JobPositions getById(@RequestParam(value = "id", required = false, defaultValue = "1")String id)
     {
         return jobPositionsService.getByID(Integer.parseInt(id));
+    }
+
+    @PostMapping("/add")
+    public Result addJobPosition(@NotNull @RequestBody JobPositions jobPosition){
+        return jobPositionsService.addJob(jobPosition);
+
     }
 
 }

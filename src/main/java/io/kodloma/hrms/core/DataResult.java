@@ -7,6 +7,10 @@ public class DataResult<T> extends Result{
         this.data = data;
     }
 
+    public DataResult(String message){
+        super(message);
+    }
+
     public DataResult(boolean success, String message, T data) {
         super(success, message);
         this.data = data;
