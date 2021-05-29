@@ -34,9 +34,9 @@ public class EmployersManager implements EmployersService {
 
     @Override
     public Result add(Employers employers) {
-        if(IsMatch(employers) && IsDuplicate(employers)) {
+        if(IsMatch(employers) && !IsDuplicate(employers)) {
             employersDao.save(employers);
-            return new SuccessDataResult<>("başarı ile kaydedildi");
+            return new SuccessDataResult<>("başarı ile kaydedildi" ,employers);
         }
 
         return new ErrorDataResult<>("problem", employers);
@@ -47,8 +47,10 @@ public class EmployersManager implements EmployersService {
     }
 
     private boolean IsMatch(Employers employers){
-        String [] mail = employers.getWeb_adress().split("[@]");
+        String [] mail = employers.getMail().split("[@]");
 
-        return employers.getWeb_adress().equals(mail[mail.length - 1]);
+        mail[mail.length - 1] = "www." + mail[mail.length - 1];
+
+        return employers.getWeb_address().equals(mail[mail.length - 1]);
     }
 }

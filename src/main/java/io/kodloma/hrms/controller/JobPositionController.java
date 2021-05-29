@@ -8,6 +8,7 @@ import io.kodloma.hrms.entities.concrete.JobPositions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -34,7 +35,7 @@ public class JobPositionController {
     }
 
     @PostMapping("/add")
-    public Result addJobPosition(@NotNull @RequestBody JobPositions jobPosition){
+    public Result addJobPosition(@Valid @RequestBody JobPositions jobPosition){
         return jobPositionsService.addJob(jobPosition);
 
     }

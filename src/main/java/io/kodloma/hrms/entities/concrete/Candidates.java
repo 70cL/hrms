@@ -8,7 +8,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -16,13 +19,21 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(name = "candidates")
+@PrimaryKeyJoinColumn(name = "id")
 public class Candidates extends User {
     @Column(name = "firstname")
+    @NotEmpty(message = "Name may not be empty")
+    @Size(min = 2, max = 32, message = "Name must be between 2 and 32 characters long")
     private String first_name;
     @Column(name = "lastname")
+    @NotEmpty(message = "Last name may not be empty")
+    @Size(min = 2, max = 32, message = "Last name must be between 2 and 32 characters long")
     private String last_name;
     @Column(name = "nationalidentity")
-    private String national_identity;
+    @NotEmpty(message = "TCK name may not be empty")
+    @Size(min = 2, max = 32, message = "TCK must be 11 number long")
+    private String nationalidentity;
+    @NotEmpty(message = "birth date name may not be empty")
     @Column(name = "birthofdate")
-    private int date_of_birth;
+    private String date_of_birth;
 }

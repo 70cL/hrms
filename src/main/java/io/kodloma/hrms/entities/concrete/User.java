@@ -1,13 +1,14 @@
 package io.kodloma.hrms.entities.concrete;
 
-import com.sun.istack.NotNull;
 import io.kodloma.hrms.entities.abstracts.IEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,8 +22,10 @@ public class User implements IEntity {
     @Column(name = "id")
     private int id;
     @Column(name = "email")
+    @NotEmpty(message = "Mail may not be empty")
     private String mail;
     @Column(name = "password")
+    @NotBlank(message = "Password may not be empty")
+    @Size(min = 6, max = 12, message = "Password must be between 6 and 12 characters long")
     private String password;
-
 }

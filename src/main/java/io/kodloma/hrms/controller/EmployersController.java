@@ -5,13 +5,16 @@ import io.kodloma.hrms.business.abtracts.EmployeesService;
 import io.kodloma.hrms.business.abtracts.EmployersService;
 import io.kodloma.hrms.business.abtracts.JobPositionsService;
 import io.kodloma.hrms.core.DataResult;
+import io.kodloma.hrms.core.ErrorDataResult;
 import io.kodloma.hrms.core.Result;
 import io.kodloma.hrms.entities.concrete.Employees;
 import io.kodloma.hrms.entities.concrete.Employers;
 import io.kodloma.hrms.entities.concrete.JobPositions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -32,7 +35,7 @@ public class EmployersController {
     }
 
     @PostMapping("/add")
-    public Result addEmployer(@NotNull @RequestBody Employers employers){
-        return employersService.add(employers);
+    public Result addEmployer(@Valid @RequestBody Employers employers){
+       return employersService.add(employers);
     }
 }
