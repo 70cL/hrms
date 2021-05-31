@@ -32,4 +32,21 @@ public class JobAdvertisementManager implements JobAdvertisementService {
     public Result add(JobAdvertisements jobAdvertisement) {
         return new SuccessDataResult<>("İlan kayıt edildi.",jobAdvertisementsDao.save(jobAdvertisement));
     }
+
+    @Override
+    public DataResult<List<JobAdvertisements>> findByActive(boolean status) {
+        return new SuccessDataResult<>(status + " ilanlar listelendi", jobAdvertisementsDao.findByActive(status));
+    }
+
+    @Override
+    public DataResult<List<JobAdvertisements>> findByActiveOrderByApplicationDeadline(boolean status) {
+        return new SuccessDataResult<>(status + " ilanlar tarih sırasına göre listelendi.",
+                jobAdvertisementsDao.findByActiveOrderByApplicationDeadline(status));
+    }
+
+    @Override
+    public DataResult<List<JobAdvertisements>> findByActiveAndEmployers_CompanyName(boolean status, String companyName) {
+        return new SuccessDataResult<>(companyName + " şirketinin " + status + "iş ilanları",
+                jobAdvertisementsDao.findByActiveAndEmployers_CompanyName(status, companyName));
+    }
 }

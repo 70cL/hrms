@@ -9,4 +9,7 @@ import java.util.List;
 public interface JobAdvertisementService {
     DataResult<List<JobAdvertisements>> getAll();
     Result add(JobAdvertisements jobAdvertisement);
+    DataResult<List<JobAdvertisements>> findByActive(boolean status);
+    DataResult<List<JobAdvertisements>> findByActiveOrderByApplicationDeadline(boolean status);
+    DataResult<List<JobAdvertisements>> findByActiveAndEmployers_CompanyName(boolean status, String companyName);
 }

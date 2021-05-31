@@ -29,7 +29,7 @@ public class JobPositionsManager implements JobPositionsService {
     }
 
     @Override
-    public JobPositions getByID(int id) {
+    public JobPositions getById(int id) {
         return jobPositionDao.findById(id).get();
     }
 

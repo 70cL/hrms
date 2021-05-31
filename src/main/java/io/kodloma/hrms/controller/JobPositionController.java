@@ -1,6 +1,5 @@
 package io.kodloma.hrms.controller;
 
-import com.sun.istack.NotNull;
 import io.kodloma.hrms.business.abtracts.JobPositionsService;
 import io.kodloma.hrms.core.DataResult;
 import io.kodloma.hrms.core.Result;
@@ -31,7 +30,7 @@ public class JobPositionController {
     @GetMapping("/getbyid")
     public JobPositions getById(@RequestParam(value = "id", required = false, defaultValue = "1")String id)
     {
-        return jobPositionsService.getByID(Integer.parseInt(id));
+        return jobPositionsService.getById(Integer.parseInt(id));
     }
 
     @PostMapping("/add")

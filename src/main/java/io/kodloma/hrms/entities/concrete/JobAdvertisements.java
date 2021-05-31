@@ -20,7 +20,7 @@ public class JobAdvertisements {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Cities.class ,fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cities_id", referencedColumnName =  "id" ,nullable = false)
     private Cities cities ;
 
@@ -28,7 +28,7 @@ public class JobAdvertisements {
     @JoinColumn(name = "job_position_id", referencedColumnName =  "id" ,nullable = false)
     private JobPositions jobPositions;
 
-    @ManyToOne(targetEntity = JobPositions.class ,fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(targetEntity = Employers.class ,fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "employers_id", referencedColumnName =  "id" ,nullable = false)
     private Employers employers;
 
@@ -52,9 +52,9 @@ public class JobAdvertisements {
 
     @Column(name = "application_deadline")
     @NotEmpty(message = "application_deadline may not be empty")
-    private String application_deadline;
+    private String applicationDeadline;
 
-    @Column(name = "is_active")
-    @NotEmpty(message = "is_active may not be empty")
-    private boolean is_active;
+    @Column(name = "active")
+    @NotEmpty(message = "active may not be empty")
+    private boolean active;
 }

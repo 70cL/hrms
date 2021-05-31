@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Data
 @Entity
@@ -22,11 +23,6 @@ public class JobPositions {
     @Size(min = 2, max = 32, message = "Title must be between 2 and 32 characters long")
     private String title;
 
-    //    @OneToMany(
-//            mappedBy = "jobpositions",
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true
-//    )
-//    private List<JobAdvertisements> jobAdvertisements;
+
 
 }

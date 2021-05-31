@@ -30,4 +30,19 @@ public class JobAdvertisementController {
     public Result add(@Valid @RequestBody JobAdvertisements jobAdvertisements){
         return jobAdvertisementService.add(jobAdvertisements);
     }
+
+    @GetMapping("/isactive")
+    public DataResult<List<JobAdvertisements>> findByActive(@RequestParam boolean status){
+        return jobAdvertisementService.findByActive(status);
+    }
+
+    @GetMapping("/isActive/order")
+    public DataResult<List<JobAdvertisements>> findByActiveOrderByApplicationDeadline(@RequestParam boolean status){
+        return jobAdvertisementService.findByActiveOrderByApplicationDeadline(status);
+    }
+
+    @GetMapping("/get/CompanyName")
+    public DataResult<List<JobAdvertisements>> findByActiveAndEmployers_CompanyName(@RequestParam boolean status,@RequestParam String companyName){
+        return jobAdvertisementService.findByActiveAndEmployers_CompanyName(status, companyName);
+    }
 }
