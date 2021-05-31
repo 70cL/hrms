@@ -12,7 +12,7 @@ package io.kodloma.hrms.adapters.Mernis;
 import java.util.Date;
 
 
-public interface VAJDateTimeConverter
+public interface QEPDateTimeConverter
 {
     java.util.Date convertDateTime(String strDate);
     java.util.Date convertTime(String strDate);

@@ -12,6 +12,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -31,9 +32,9 @@ public class Candidates extends User {
     private String last_name;
     @Column(name = "nationalidentity")
     @NotEmpty(message = "TCK name may not be empty")
-    @Size(min = 2, max = 32, message = "TCK must be 11 number long")
+    @Size(min = 11, max = 11, message = "TCK must be 11 number long")
     private String nationalidentity;
-    @NotEmpty(message = "birth date name may not be empty")
-    @Column(name = "birthofdate")
-    private String date_of_birth;
+    @Size(min=1, message= "enter year")
+    @Column(name = "birthofyear")
+    private String birth_of_year;
 }

@@ -15,7 +15,7 @@ import java.util.Locale;
 
 
 
-public class VAJStandardDateTimeConverter implements VAJDateTimeConverter
+public class QEPStandardDateTimeConverter implements QEPDateTimeConverter
 {
     public java.util.TimeZone TimeZone=java.util.TimeZone.getTimeZone("UTC");
 

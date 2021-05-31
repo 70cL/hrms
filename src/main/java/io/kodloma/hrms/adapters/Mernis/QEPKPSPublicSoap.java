@@ -22,13 +22,13 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class VAJKPSPublicSoap
+public class QEPKPSPublicSoap
 {
-    interface VAJIWcfMethod
+    interface QEPIWcfMethod
     {
-        VAJExtendedSoapSerializationEnvelope CreateSoapEnvelope() throws java.lang.Exception;
+        QEPExtendedSoapSerializationEnvelope CreateSoapEnvelope() throws java.lang.Exception;
 
-        java.lang.Object ProcessResult(VAJExtendedSoapSerializationEnvelope __envelope,java.lang.Object result) throws java.lang.Exception;
+        java.lang.Object ProcessResult(QEPExtendedSoapSerializationEnvelope __envelope,java.lang.Object result) throws java.lang.Exception;
     }
 
     String url="https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx";
@@ -39,14 +39,14 @@ public class VAJKPSPublicSoap
     public boolean enableLogging;
 
 
-    public VAJKPSPublicSoap(){}
+    public QEPKPSPublicSoap(){}
 
-    public VAJKPSPublicSoap(String url)
+    public QEPKPSPublicSoap(String url)
     {
         this.url = url;
     }
 
-    public VAJKPSPublicSoap(String url,int timeOut)
+    public QEPKPSPublicSoap(String url,int timeOut)
     {
         this.url = url;
         this.timeOut=timeOut;
@@ -79,15 +79,15 @@ public class VAJKPSPublicSoap
         return null;
     }
 
-    protected VAJExtendedSoapSerializationEnvelope createEnvelope()
+    protected QEPExtendedSoapSerializationEnvelope createEnvelope()
     {
-        VAJExtendedSoapSerializationEnvelope envelope= new VAJExtendedSoapSerializationEnvelope(VAJExtendedSoapSerializationEnvelope.VER11);
+        QEPExtendedSoapSerializationEnvelope envelope= new QEPExtendedSoapSerializationEnvelope(QEPExtendedSoapSerializationEnvelope.VER11);
         envelope.enableLogging = enableLogging;
     
         return envelope;
     }
 
-    protected java.util.List sendRequest(String methodName,VAJExtendedSoapSerializationEnvelope envelope,org.ksoap2.transport.Transport transport ,com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile profile )throws java.lang.Exception
+    protected java.util.List sendRequest(String methodName,QEPExtendedSoapSerializationEnvelope envelope,org.ksoap2.transport.Transport transport ,com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile profile )throws java.lang.Exception
     {
         if(transport instanceof com.easywsdl.exksoap2.transport.AdvancedHttpTransportSE )
         {
@@ -99,7 +99,7 @@ public class VAJKPSPublicSoap
         }
     }
 
-    java.lang.Object getResult(java.lang.Class destObj,java.lang.Object source,String resultName,VAJExtendedSoapSerializationEnvelope __envelope) throws java.lang.Exception
+    java.lang.Object getResult(java.lang.Class destObj,java.lang.Object source,String resultName,QEPExtendedSoapSerializationEnvelope __envelope) throws java.lang.Exception
     {
         if(source==null)
         {
@@ -143,11 +143,11 @@ public class VAJKPSPublicSoap
     public Boolean TCKimlikNoDogrula(final Long TCKimlikNo,final String Ad,final String Soyad,final Integer DogumYili) throws java.lang.Exception
     {
         com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile __profile = new com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile();
-        return (Boolean)execute(new VAJIWcfMethod()
+        return (Boolean)execute(new QEPIWcfMethod()
         {
             @Override
-            public VAJExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
-                VAJExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+            public QEPExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
+                QEPExtendedSoapSerializationEnvelope __envelope = createEnvelope();
                 SoapObject __soapReq = new SoapObject("http://tckimlik.nvi.gov.tr/WS", "TCKimlikNoDogrula");
                 __envelope.setOutputSoapObject(__soapReq);
                 
@@ -180,7 +180,7 @@ public class VAJKPSPublicSoap
             }
             
             @Override
-            public java.lang.Object ProcessResult(VAJExtendedSoapSerializationEnvelope __envelope,java.lang.Object __result)throws java.lang.Exception {
+            public java.lang.Object ProcessResult(QEPExtendedSoapSerializationEnvelope __envelope,java.lang.Object __result)throws java.lang.Exception {
                 SoapObject __soap=(SoapObject)__result;
                 java.lang.Object obj = __soap.getProperty("TCKimlikNoDogrulaResult");
                 if (obj instanceof SoapPrimitive)
@@ -196,11 +196,11 @@ public class VAJKPSPublicSoap
         },"http://tckimlik.nvi.gov.tr/WS/TCKimlikNoDogrula",__profile);
     }
 
-    protected java.lang.Object execute(VAJIWcfMethod wcfMethod,String methodName,com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile profile) throws java.lang.Exception
+    protected java.lang.Object execute(QEPIWcfMethod wcfMethod,String methodName,com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile profile) throws java.lang.Exception
     {
         org.ksoap2.transport.Transport __httpTransport=createTransport();
         __httpTransport.debug=enableLogging;
-        VAJExtendedSoapSerializationEnvelope __envelope=wcfMethod.CreateSoapEnvelope();
+        QEPExtendedSoapSerializationEnvelope __envelope=wcfMethod.CreateSoapEnvelope();
         try
         {
             sendRequest(methodName, __envelope, __httpTransport,profile);
@@ -226,7 +226,7 @@ public class VAJKPSPublicSoap
     }
 
 
-    protected java.lang.Exception convertToException(org.ksoap2.SoapFault fault,VAJExtendedSoapSerializationEnvelope envelope)
+    protected java.lang.Exception convertToException(org.ksoap2.SoapFault fault,QEPExtendedSoapSerializationEnvelope envelope)
     {
         org.ksoap2.SoapFault newException = fault;
         return newException;

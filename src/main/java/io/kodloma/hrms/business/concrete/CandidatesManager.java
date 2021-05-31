@@ -35,16 +35,22 @@ public class CandidatesManager implements CandidatesService {
 
     @Override
     public Result add(Candidates candidates) {
-        if(!IsDuplicate(candidates) && mernisService.ApiControl(candidates)) {
-            candidatesDao.save(candidates);
-            return new ErrorDataResult<>("mail yada tc no sistemde mevcut", candidates);
-        }
+        if(isDupMail(candidates))
+            return new ErrorDataResult<>("mail sistemde mevcut", candidates);
+        if (isDupTcno(candidates))
+            return new ErrorDataResult<>("tcno sistemde mevcut", candidates);
+        //if(!mernisService.ApiControl(candidates)) // çalıştırılamadı
+            //return new ErrorDataResult<>("Tc no diğer bilgiler ile uyumsuz", candidates);
 
-        return new SuccessDataResult<>("Başarı ile kaydedildi", candidates);
+        candidatesDao.save(candidates);
+        return new SuccessDataResult<>("Başarılı", candidates);
     }
 
-    private boolean IsDuplicate(Candidates candidates){
-        return  candidatesDao.existsBymail(candidates.getMail()) &&
-                candidatesDao.existsBynationalidentity(candidates.getNationalidentity());
+    private boolean isDupMail(Candidates candidates){
+        return candidatesDao.existsBymail(candidates.getMail());
+    }
+
+    private boolean isDupTcno(Candidates candidates){
+        return candidatesDao.existsBynationalidentity(candidates.getNationalidentity());
     }
 }

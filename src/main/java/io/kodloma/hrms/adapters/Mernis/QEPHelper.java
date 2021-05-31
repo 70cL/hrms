@@ -15,7 +15,7 @@ import org.kxml2.kdom.Element;
 import org.kxml2.kdom.Node;
 
 
-public class VAJHelper
+public class QEPHelper
 {
     public static < T, E> T getKeyByValue(java.util.Map< T, E> map, E value) {
         for (java.util.Map.Entry< T, E> entry : map.entrySet()) {
@@ -68,7 +68,7 @@ public class VAJHelper
             if (obj instanceof java.util.Date)
             {
                 java.util.Date date = (java.util.Date) obj;
-                value = VAJExtendedSoapSerializationEnvelope.getDateTimeConverter().getStringFromDateTime(date);
+                value = QEPExtendedSoapSerializationEnvelope.getDateTimeConverter().getStringFromDateTime(date);
             }
             parentElement.addChild(org.kxml2.kdom.Node.TEXT,value);
         }
