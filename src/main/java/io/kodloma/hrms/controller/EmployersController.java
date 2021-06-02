@@ -29,7 +29,7 @@ public class EmployersController {
         this.employersService = employersService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public DataResult<List<Employers>> getAll(){
         return employersService.getAll();
     }

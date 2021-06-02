@@ -22,12 +22,12 @@ public class JobPositionController {
         this.jobPositionsService = jobPositionsService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public DataResult<List<JobPositions>> getAll(){
         return jobPositionsService.getAll();
     }
 
-    @GetMapping("/getbyid")
+    @GetMapping("/getById")
     public JobPositions getById(@RequestParam(value = "id", required = false, defaultValue = "1")String id)
     {
         return jobPositionsService.getById(Integer.parseInt(id));

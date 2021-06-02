@@ -22,7 +22,7 @@ public class JobAdvertisements {
 
     @ManyToOne(targetEntity = Cities.class ,fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cities_id", referencedColumnName =  "id" ,nullable = false)
-    private Cities cities ;
+    private Cities cities;
 
     @ManyToOne(targetEntity = JobPositions.class ,fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "job_position_id", referencedColumnName =  "id" ,nullable = false)

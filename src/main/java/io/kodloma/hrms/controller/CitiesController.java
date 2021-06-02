@@ -3,7 +3,6 @@ package io.kodloma.hrms.controller;
 import io.kodloma.hrms.business.abtracts.CitiesService;
 import io.kodloma.hrms.core.DataResult;
 import io.kodloma.hrms.entities.concrete.Cities;
-import io.kodloma.hrms.entities.concrete.JobAdvertisements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +21,7 @@ public class CitiesController {
         this.citiesService = citiesService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public DataResult<List<Cities>> getAll(){
         return citiesService.getAll();
     }

@@ -35,18 +35,26 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
     @Override
     public DataResult<List<JobAdvertisements>> findByActive(boolean status) {
-        return new SuccessDataResult<>(status + " ilanlar listelendi", jobAdvertisementsDao.findByActive(status));
+        return jobAdvertisementsDao.findByActive(status).isEmpty() ?
+                  new ErrorDataResult<>(status + " ilan bulunamadı", jobAdvertisementsDao.findByActive(status))
+                : new SuccessDataResult<>(status + " ilanlar listelendi", jobAdvertisementsDao.findByActive(status));
     }
 
     @Override
     public DataResult<List<JobAdvertisements>> findByActiveOrderByApplicationDeadline(boolean status) {
-        return new SuccessDataResult<>(status + " ilanlar tarih sırasına göre listelendi.",
+        return jobAdvertisementsDao.findByActive(status).isEmpty() ?
+                new ErrorDataResult<>(status + " ilan bulunamadı.",
+                jobAdvertisementsDao.findByActiveOrderByApplicationDeadline(status)) :
+                new SuccessDataResult<>(status + " ilanlar tarih sırasına göre listelendi.",
                 jobAdvertisementsDao.findByActiveOrderByApplicationDeadline(status));
     }
 
     @Override
     public DataResult<List<JobAdvertisements>> findByActiveAndEmployers_CompanyName(boolean status, String companyName) {
-        return new SuccessDataResult<>(companyName + " şirketinin " + status + "iş ilanları",
+        return jobAdvertisementsDao.findByActive(status).isEmpty() ?
+                new ErrorDataResult<>(status + " ilan bulunamadı.",
+                jobAdvertisementsDao.findByActiveAndEmployers_CompanyName(status, companyName)) :
+                new SuccessDataResult<>(companyName + " şirketinin " + status + "iş ilanları",
                 jobAdvertisementsDao.findByActiveAndEmployers_CompanyName(status, companyName));
     }
 }

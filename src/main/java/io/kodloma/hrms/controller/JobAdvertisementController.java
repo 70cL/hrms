@@ -21,7 +21,7 @@ public class JobAdvertisementController {
         this.jobAdvertisementService = jobAdvertisementService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public DataResult<List<JobAdvertisements>> getAll(){
         return jobAdvertisementService.getAll();
     }
@@ -31,17 +31,17 @@ public class JobAdvertisementController {
         return jobAdvertisementService.add(jobAdvertisements);
     }
 
-    @GetMapping("/isactive")
+    @GetMapping("/active")
     public DataResult<List<JobAdvertisements>> findByActive(@RequestParam boolean status){
         return jobAdvertisementService.findByActive(status);
     }
 
-    @GetMapping("/isActive/order")
+    @GetMapping("/active/order")
     public DataResult<List<JobAdvertisements>> findByActiveOrderByApplicationDeadline(@RequestParam boolean status){
         return jobAdvertisementService.findByActiveOrderByApplicationDeadline(status);
     }
 
-    @GetMapping("/get/CompanyName")
+    @GetMapping("/get/companyName")
     public DataResult<List<JobAdvertisements>> findByActiveAndEmployers_CompanyName(@RequestParam boolean status,@RequestParam String companyName){
         return jobAdvertisementService.findByActiveAndEmployers_CompanyName(status, companyName);
     }
