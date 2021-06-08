@@ -21,9 +21,11 @@ public class User implements IEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
     @Column(name = "email")
     @NotEmpty(message = "Mail may not be empty")
     private String mail;
+
     @Column(name = "password")
     @NotBlank(message = "Password may not be empty")
     @Size(min = 6, max = 12, message = "Password must be between 6 and 12 characters long")

@@ -24,6 +24,7 @@ public class Employees extends User {
     @NotEmpty(message = "Name may not be empty")
     @Size(min = 2, max = 32, message = "Name must be between 2 and 32 characters long")
     private String first_name;
+
     @Column(name = "lastname")
     @NotEmpty(message = "Last name may not be empty")
     @Size(min = 2, max = 32, message = "Last name must be between 2 and 32 characters long")
