@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <EasyWSDL>
   <Info>
-    <Version>5.11.5.0</Version>
+    <Version>5.12.0.0</Version>
     <AccountType>Basic</AccountType>
     <LibrariesFolder>easywsdl</LibrariesFolder>
-    <MainClass>QEPKPSPublicSoap</MainClass>
+    <MainClass>NNDKPSPublicSoap</MainClass>
   </Info>
   <Settings>
     <Url>https://tckimlik.nvi.gov.tr/Service/KPSPublic.asmx?WSDL</Url>
@@ -20,7 +20,7 @@
     <AddAnyCollection>false</AddAnyCollection>
     <DateTimeSupport>Default</DateTimeSupport>
     <Repackage/>
-    <GenerateHtmlDocumentation>false</GenerateHtmlDocumentation>
+    <GenerateHtmlDocumentation>true</GenerateHtmlDocumentation>
     <AddDataSetSupport>false</AddDataSetSupport>
     <PlatformType>Java</PlatformType>
     <Annotations>None</Annotations>
@@ -29,13 +29,21 @@
     <DetectDictionaries>false</DetectDictionaries>
   </Settings>
   <Files>
-    <File>QEPDateTimeConverter.java</File>
-    <File>QEPExtendedSoapSerializationEnvelope.java</File>
-    <File>QEPHelper.java</File>
-    <File>QEPKPSPublicSoap.java</File>
-    <File>QEPKPSPublicSoap12.java</File>
-    <File>QEPMarshalGuid.java</File>
-    <File>QEPStandardDateTimeConverter.java</File>
+    <File>docs/Html/MTOMTransfer.html</File>
+    <File>docs/Html/NNDKPSPublicSoap.html</File>
+    <File>docs/Html/NNDKPSPublicSoap12.html</File>
+    <File>docs/Html/NNDKPSPublicSoap12_methods.html</File>
+    <File>docs/Html/NNDKPSPublicSoap_methods.html</File>
+    <File>docs/Html/Tips.html</File>
+    <File>docs/Index.html</File>
+    <File>docs/Styles/Blueprint_Styles/Style.css</File>
+    <File>NNDDateTimeConverter.java</File>
+    <File>NNDExtendedSoapSerializationEnvelope.java</File>
+    <File>NNDHelper.java</File>
+    <File>NNDKPSPublicSoap.java</File>
+    <File>NNDKPSPublicSoap12.java</File>
+    <File>NNDMarshalGuid.java</File>
+    <File>NNDStandardDateTimeConverter.java</File>
   </Files>
   <Libraries>
     <File>ExKsoap2-1.0.3.1.jar</File>
