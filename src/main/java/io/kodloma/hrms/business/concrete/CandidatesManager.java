@@ -1,6 +1,5 @@
 package io.kodloma.hrms.business.concrete;
 
-import io.kodloma.hrms.adapters.concrete.MernisManager;
 import io.kodloma.hrms.adapters.concrete.MernisService;
 import io.kodloma.hrms.business.abtracts.CandidatesService;
 import io.kodloma.hrms.core.DataResult;
@@ -8,9 +7,7 @@ import io.kodloma.hrms.core.ErrorDataResult;
 import io.kodloma.hrms.core.Result;
 import io.kodloma.hrms.core.SuccessDataResult;
 import io.kodloma.hrms.dataAccessLayer.abstracts.CandidatesDao;
-import io.kodloma.hrms.dataAccessLayer.abstracts.UserDao;
 import io.kodloma.hrms.entities.concrete.Candidates;
-import io.kodloma.hrms.entities.concrete.Employers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
