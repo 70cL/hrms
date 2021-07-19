@@ -26,4 +26,9 @@ public class Technologies {
     @Column(name = "technology_level")
     private int technologyLevel;
 
+//    @ManyToOne
+//    @JoinColumn(name = "resume_id", referencedColumnName = "id")
+//    private Resumes resumes;
+
+
 }

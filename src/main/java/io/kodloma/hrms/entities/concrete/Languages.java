@@ -22,4 +22,9 @@ public class Languages {
 
     @Column(name = "language_level")
     private int languageLevel;
+
+    //@ManyToOne
+    //@JoinColumn(name = "resume_id", referencedColumnName = "id")
+    //private Resumes resumes;
+
 }

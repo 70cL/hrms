@@ -10,18 +10,18 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "educations")
-public class Educations {
+@Table(name = "job_experiences")
+public class JobExperiences {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "school_name")
-    private String schoolName;
+    @Column(name = "company_name")
+    private String companyName;
 
-    @Column(name = "department")
-    private String department;
+    @Column(name = "job_position")
+    private String jobPosition;
 
     @Column(name = "start_date")
     private String startDate;
@@ -29,12 +29,8 @@ public class Educations {
     @Column(name = "end_date")
     private String endDate;
 
-    @Column(name = "is_graduated")
-    private boolean isGraduated;
-
 //    @ManyToOne
 //    @JoinColumn(name = "resume_id", referencedColumnName = "id")
 //    private Resumes resumes;
-
 
 }
