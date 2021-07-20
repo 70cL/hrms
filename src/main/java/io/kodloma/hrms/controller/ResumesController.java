@@ -2,12 +2,14 @@ package io.kodloma.hrms.controller;
 
 import io.kodloma.hrms.business.abtracts.ResumesService;
 import io.kodloma.hrms.core.DataResult;
+import io.kodloma.hrms.core.Result;
 import io.kodloma.hrms.entities.concrete.Resumes;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.xml.crypto.Data;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -24,5 +26,10 @@ public class ResumesController {
     @GetMapping("/getAll")
     public DataResult<List<Resumes>> getAll(){
         return resumesService.getAll();
+    }
+
+    @PutMapping("/uploadPhoto")
+    public Result uploadPhoto(@RequestParam(value = "file") MultipartFile multipartFile, @RequestParam(value = "id") String resumeId) throws IOException {
+        return resumesService.saveImage(multipartFile, Integer.parseInt(resumeId));
     }
 }
