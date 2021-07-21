@@ -50,4 +50,8 @@ public class Resumes {
     @JoinColumn(name = "resume_id", referencedColumnName = "id")
     private List<Technologies> technologiesList;
 
+    @ManyToOne
+    @JoinColumn(name = "candidates_id", referencedColumnName = "id")
+    private Candidates candidates;
+
 }
