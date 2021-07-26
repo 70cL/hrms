@@ -13,16 +13,16 @@ import java.util.Map;
 @Service
 public class CloudinaryManager implements CloudinaryService{
     private Environment environment;
-    private Cloudinary cloudinary;
+    private final Cloudinary cloudinary;
 
     @Autowired
     public CloudinaryManager(Environment environment){
         this.environment = environment;
 
         cloudinary = new Cloudinary(ObjectUtils.asMap(
-                "cloud_name", environment.getProperty("cloud.name"),
-                "api_key", environment.getProperty("api.key"),
-                "api_secret", environment.getProperty("api.secret"),
+                "cloud_name", this.environment.getProperty("cloud.name"),
+                "api_key", this.environment.getProperty("api.key"),
+                "api_secret", this.environment.getProperty("api.secret"),
                 "secure", true));
     }
 
