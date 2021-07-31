@@ -54,4 +54,26 @@ public class ResumesManager implements ResumesService {
 
         return new SuccessDataResult<Resumes>("Resim eklendi", currentCv);
     }
+
+    @Override
+    public Result updateCV(Resumes resume) {
+        Resumes currentCv;
+
+        try {
+            Optional<Resumes> cv = resumesDao.findById(resume.getId());
+
+            cv.orElseThrow();
+
+            currentCv = resume;
+
+            resumesDao.save(currentCv);
+
+        }
+        catch (NoSuchElementException noSuchElementException)
+        {
+            return new ErrorDataResult<Resumes>("Cv güncellenemedi");
+        }
+
+        return new SuccessDataResult<>("Cv güncellendi", currentCv);
+    }
 }

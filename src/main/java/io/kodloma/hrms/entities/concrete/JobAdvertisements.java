@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 
 @Data
@@ -19,6 +20,14 @@ public class JobAdvertisements {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "working_type_id", referencedColumnName = "id")
+    private WorkingType workingType;
+
+    @ManyToOne
+    @JoinColumn(name = "working_location_id", referencedColumnName = "id")
+    private WorkingLocation workingLocations;
 
     @ManyToOne(targetEntity = Cities.class ,fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cities_id", referencedColumnName =  "id" ,nullable = false)

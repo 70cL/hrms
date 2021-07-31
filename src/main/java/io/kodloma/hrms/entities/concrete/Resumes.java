@@ -54,4 +54,5 @@ public class Resumes {
     @JoinColumn(name = "candidates_id", referencedColumnName = "id")
     private Candidates candidates;
 
+
 }

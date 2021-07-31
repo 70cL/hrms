@@ -11,4 +11,5 @@ import java.util.List;
 public interface ResumesService {
     DataResult<List<Resumes>> getAll();
     Result saveImage(MultipartFile multipartFile, int resumeId) throws IOException;
+    Result updateCV(Resumes resume);
 }

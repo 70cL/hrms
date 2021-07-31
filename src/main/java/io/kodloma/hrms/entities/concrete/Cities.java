@@ -26,10 +26,4 @@ public class Cities {
     @Size(min = 2, max = 15, message = "city must be between 2 and 32 characters long")
     private String city;
 
-//    @OneToMany(
-//            mappedBy = "cities",
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true
-//    )
-//    private List<JobAdvertisements> jobAdvertisements;
 }

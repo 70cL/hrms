@@ -19,6 +19,8 @@ public class CloudinaryManager implements CloudinaryService{
     public CloudinaryManager(Environment environment){
         this.environment = environment;
 
+
+
         cloudinary = new Cloudinary(ObjectUtils.asMap(
                 "cloud_name", this.environment.getProperty("cloud.name"),
                 "api_key", this.environment.getProperty("api.key"),
