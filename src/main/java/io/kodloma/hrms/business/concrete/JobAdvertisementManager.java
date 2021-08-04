@@ -9,22 +9,29 @@ import io.kodloma.hrms.dataAccessLayer.abstracts.JobAdvertisementsDao;
 import io.kodloma.hrms.entities.concrete.JobAdvertisements;
 import io.kodloma.hrms.entities.concrete.Resumes;
 import io.kodloma.hrms.entities.concrete.WorkingType;
+import io.kodloma.hrms.entities.dto.JobAdvertisementDTO;
+import io.kodloma.hrms.entities.dto.JobAdvertisementMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.PrePersist;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService {
 
     JobAdvertisementsDao jobAdvertisementsDao;
 
+    JobAdvertisementMapper jobAdvertisementMapper;
+
     @Autowired
-    public JobAdvertisementManager(JobAdvertisementsDao jobAdvertisementsDao){
+    public JobAdvertisementManager(JobAdvertisementsDao jobAdvertisementsDao, JobAdvertisementMapper jobAdvertisementMapper){
         this.jobAdvertisementsDao = jobAdvertisementsDao;
+        this.jobAdvertisementMapper = jobAdvertisementMapper;
     }
 
     @Override
@@ -64,14 +71,15 @@ public class JobAdvertisementManager implements JobAdvertisementService {
     }
 
     @Override
-    public Result updateJobAd(int id) {
-        JobAdvertisements currentAd;
+    public Result updateJobAd(JobAdvertisementDTO jobAdvertisementDTO) {
 
         try {
-            Optional<JobAdvertisements> cv = jobAdvertisementsDao.findById(id);
 
-            jobAdvertisementsDao.save(cv.get());
+            Optional<JobAdvertisements> cv = jobAdvertisementsDao.findById(jobAdvertisementDTO.getId());
+            System.out.println(jobAdvertisementDTO.getId());
+            System.out.println(cv.get().getId());
 
+            jobAdvertisementsDao.save(jobAdvertisementMapper.fromTwoOther(jobAdvertisementDTO, cv.get()));
         }
         catch (NoSuchElementException noSuchElementException)
         {
@@ -80,4 +88,6 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
         return new SuccessDataResult<>("İlan güncellendi");
     }
+
+
 }

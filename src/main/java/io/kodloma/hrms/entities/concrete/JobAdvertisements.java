@@ -1,8 +1,11 @@
 package io.kodloma.hrms.entities.concrete;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -21,24 +24,24 @@ public class JobAdvertisements {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "working_type_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "working_type_id", referencedColumnName = "id")
     private WorkingType workingType;
 
-    @ManyToOne
-    @JoinColumn(name = "working_location_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "working_location_id", referencedColumnName = "id")
     private WorkingLocation workingLocations;
 
-    @ManyToOne(targetEntity = Cities.class ,fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "cities_id", referencedColumnName =  "id" ,nullable = false)
+    @ManyToOne(targetEntity = Cities.class ,fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "cities_id", referencedColumnName =  "id")
     private Cities cities;
 
-    @ManyToOne(targetEntity = JobPositions.class ,fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "job_position_id", referencedColumnName =  "id" ,nullable = false)
+    @ManyToOne(targetEntity = JobPositions.class ,fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "job_position_id", referencedColumnName =  "id")
     private JobPositions jobPositions;
 
-    @ManyToOne(targetEntity = Employers.class ,fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "employers_id", referencedColumnName =  "id" ,nullable = false)
+    @ManyToOne(targetEntity = Employers.class ,fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "employers_id", referencedColumnName =  "id")
     private Employers employers;
 
     @Column(name = "description")
@@ -47,17 +50,17 @@ public class JobAdvertisements {
     private String description;
 
     @Column(name = "min_salary")
-    private int min_salary;
+    private Integer min_salary;
 
     @Column(name = "max_salary")
-    private int max_salary;
+    private Integer max_salary;
 
     @Column(name = "created_date")
     private String created_date;
 
     @Column(name = "person_need")
     @NotEmpty(message = "person_need number may not be empty")
-    private int person_need;
+    private Integer person_need;
 
     @Column(name = "application_deadline")
     @NotEmpty(message = "application_deadline may not be empty")

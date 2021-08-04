@@ -1,5 +1,6 @@
 package io.kodloma.hrms;
 
+import io.kodloma.hrms.entities.dto.JobAdvertisementDTO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
