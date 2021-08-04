@@ -29,7 +29,7 @@ public interface JobAdvertisementMapper {
     @Mapping(source = "jobPositions", target="jobPositions", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(source = "employers", target = "employers", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(source = "description", target="description", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    @Mapping(source = "min_salary", target="min_salary", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.SET_TO_NULL)
+    @Mapping(source = "min_salary", target="min_salary", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(source = "max_salary", target="max_salary", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(source = "person_need", target="person_need" , nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     JobAdvertisements fromTwoOther(JobAdvertisementDTO dto, @MappingTarget JobAdvertisements jobAdvertisements);
