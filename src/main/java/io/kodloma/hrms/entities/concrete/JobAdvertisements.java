@@ -22,11 +22,11 @@ public class JobAdvertisements {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "working_type_id", referencedColumnName = "id")
+    @JoinColumn(name = "working_type_id", referencedColumnName = "id", nullable = false)
     private WorkingType workingType;
 
     @ManyToOne
-    @JoinColumn(name = "working_location_id", referencedColumnName = "id")
+    @JoinColumn(name = "working_location_id", referencedColumnName = "id", nullable = false)
     private WorkingLocation workingLocations;
 
     @ManyToOne(targetEntity = Cities.class ,fetch = FetchType.LAZY, optional = false)

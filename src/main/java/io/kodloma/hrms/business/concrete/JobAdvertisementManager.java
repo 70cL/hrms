@@ -7,10 +7,15 @@ import io.kodloma.hrms.core.Result;
 import io.kodloma.hrms.core.SuccessDataResult;
 import io.kodloma.hrms.dataAccessLayer.abstracts.JobAdvertisementsDao;
 import io.kodloma.hrms.entities.concrete.JobAdvertisements;
+import io.kodloma.hrms.entities.concrete.Resumes;
+import io.kodloma.hrms.entities.concrete.WorkingType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService {
@@ -56,5 +61,23 @@ public class JobAdvertisementManager implements JobAdvertisementService {
                 jobAdvertisementsDao.findByActiveAndEmployers_CompanyName(status, companyName)) :
                 new SuccessDataResult<>(companyName + " şirketinin " + status + "iş ilanları",
                 jobAdvertisementsDao.findByActiveAndEmployers_CompanyName(status, companyName));
+    }
+
+    @Override
+    public Result updateJobAd(int id) {
+        JobAdvertisements currentAd;
+
+        try {
+            Optional<JobAdvertisements> cv = jobAdvertisementsDao.findById(id);
+
+            jobAdvertisementsDao.save(cv.get());
+
+        }
+        catch (NoSuchElementException noSuchElementException)
+        {
+            return new ErrorDataResult<JobAdvertisements>("İlan güncellenemedi");
+        }
+
+        return new SuccessDataResult<>("İlan güncellendi");
     }
 }

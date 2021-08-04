@@ -32,7 +32,6 @@ public class ResumesController {
     public Result uploadPhoto(@RequestParam(value = "file") MultipartFile multipartFile, @RequestParam(value = "id") String resumeId) throws IOException {
         return resumesService.saveImage(multipartFile, Integer.parseInt(resumeId));
     }
-
     @PutMapping("/update")
     public Result updateCv(@RequestBody Resumes resumes){
         return resumesService.updateCV(resumes);

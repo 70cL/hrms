@@ -45,4 +45,9 @@ public class JobAdvertisementController {
     public DataResult<List<JobAdvertisements>> findByActiveAndEmployers_CompanyName(@RequestParam boolean status,@RequestParam String companyName){
         return jobAdvertisementService.findByActiveAndEmployers_CompanyName(status, companyName);
     }
+
+    @PutMapping("/update")
+    public Result updateJobAd(@RequestParam(value = "id") int id){
+        return jobAdvertisementService.updateJobAd(id);
+    }
 }
