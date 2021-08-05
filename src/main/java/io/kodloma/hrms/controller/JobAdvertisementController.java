@@ -48,7 +48,7 @@ public class JobAdvertisementController {
     }
 
     @PutMapping("/update")
-    public Result updateJobAd(@RequestBody JobAdvertisementDTO jobAdvertisementDTO){
-        return jobAdvertisementService.updateJobAd(jobAdvertisementDTO);
+    public Result updateJobAd(@RequestBody JobAdvertisementDTO jobAdvertisementDTO, @RequestParam(value = "id")String jobAdvId){
+        return jobAdvertisementService.updateJobAd(jobAdvertisementDTO, Integer.parseInt(jobAdvId));
     }
 }

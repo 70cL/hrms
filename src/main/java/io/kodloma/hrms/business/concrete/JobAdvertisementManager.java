@@ -71,22 +71,21 @@ public class JobAdvertisementManager implements JobAdvertisementService {
     }
 
     @Override
-    public Result updateJobAd(JobAdvertisementDTO jobAdvertisementDTO) {
+    public Result updateJobAd(JobAdvertisementDTO jobAdvertisementDTO, int jobAdvId) {
+
+        Optional<JobAdvertisements> cv;
 
         try {
-
-            Optional<JobAdvertisements> cv = jobAdvertisementsDao.findById(jobAdvertisementDTO.getId());
-            System.out.println(jobAdvertisementDTO.getId());
-            System.out.println(cv.get().getId());
+            cv = jobAdvertisementsDao.findById(jobAdvId);
 
             jobAdvertisementsDao.save(jobAdvertisementMapper.fromTwoOther(jobAdvertisementDTO, cv.get()));
         }
         catch (NoSuchElementException noSuchElementException)
         {
-            return new ErrorDataResult<JobAdvertisements>("İlan güncellenemedi");
+            return new ErrorDataResult<>("İlan güncellenemedi");
         }
 
-        return new SuccessDataResult<>("İlan güncellendi");
+        return new SuccessDataResult<>("İlan güncellendi", cv.get());
     }
 
 

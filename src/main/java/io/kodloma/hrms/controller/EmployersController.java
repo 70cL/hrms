@@ -13,6 +13,7 @@ import io.kodloma.hrms.entities.concrete.JobPositions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -38,5 +39,10 @@ public class EmployersController {
     @PostMapping("/add")
     public Result addEmployer(@Valid @RequestBody Employers employers){
        return employersService.add(employers);
+    }
+
+    @PutMapping("/uploadPhoto")
+    public Result uploadPhoto(@RequestParam(value = "file") MultipartFile multipartFile, @RequestParam(value = "id") String employerId){
+        return employersService.savePhoto(multipartFile, Integer.parseInt(employerId));
     }
 }

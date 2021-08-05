@@ -2,7 +2,6 @@ package io.kodloma.hrms.entities.dto;
 
 import io.kodloma.hrms.entities.concrete.JobAdvertisements;
 import org.mapstruct.*;
-import org.mapstruct.factory.Mappers;
 
 
 @Mapper(componentModel = "spring")

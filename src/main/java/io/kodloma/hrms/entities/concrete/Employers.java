@@ -27,6 +27,10 @@ public class Employers extends User {
     @Size(min = 2, max = 32, message = "Company must be between 2 and 32 characters long")
     private String companyName;
 
+    @Column(name = "companyphoto")
+    @NotEmpty(message = "Company photo should be added")
+    private String companyPhoto;
+
     @Column(name = "webadress")
     @NotEmpty(message = "Web address may not be empty")
     @Size(min = 2, max = 32, message = "Web address must be between 2 and 32 characters long")

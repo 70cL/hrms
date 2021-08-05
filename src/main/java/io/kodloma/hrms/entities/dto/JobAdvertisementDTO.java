@@ -26,6 +26,7 @@ public class JobAdvertisementDTO {
     @JsonIgnore
     private Employers employers;
     private Cities cities;
+    @JsonIgnore
     private JobPositions jobPositions;
     private String description;
     private Integer min_salary;
