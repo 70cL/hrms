@@ -19,7 +19,7 @@ public interface JobAdvertisementMapper {
     @Mapping(source = "min_salary", target="min_salary")
     @Mapping(source = "max_salary", target="max_salary")
     @Mapping(source = "person_need", target="person_need")
-    JobAdvertisements fromDto(JobAdvertisementDTO dto);
+    JobAdvertisements fromDto(JobAdvertisementUpdateDTO dto);
 
     @Mapping(source = "id", target = "id")
     @Mapping(source = "workingType", target="workingType", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
@@ -31,9 +31,9 @@ public interface JobAdvertisementMapper {
     @Mapping(source = "min_salary", target="min_salary", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(source = "max_salary", target="max_salary", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(source = "person_need", target="person_need" , nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    JobAdvertisements fromTwoOther(JobAdvertisementDTO dto, @MappingTarget JobAdvertisements jobAdvertisements);
+    JobAdvertisements fromTwoOther(JobAdvertisementUpdateDTO dto, @MappingTarget JobAdvertisements jobAdvertisements);
 
     @InheritInverseConfiguration(name="fromDto")
-    JobAdvertisementDTO toDto(JobAdvertisements entity);
+    JobAdvertisementUpdateDTO toDto(JobAdvertisements entity);
 
 }

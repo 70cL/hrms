@@ -4,7 +4,7 @@ import io.kodloma.hrms.business.abtracts.JobAdvertisementService;
 import io.kodloma.hrms.core.DataResult;
 import io.kodloma.hrms.core.Result;
 import io.kodloma.hrms.entities.concrete.JobAdvertisements;
-import io.kodloma.hrms.entities.dto.JobAdvertisementDTO;
+import io.kodloma.hrms.entities.dto.JobAdvertisementUpdateDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +28,7 @@ public class JobAdvertisementController {
     }
 
     @PostMapping("/add")
-    public Result add(@RequestBody JobAdvertisements jobAdvertisements){
+    public Result add(@RequestBody JobAdvertisementUpdateDTO jobAdvertisements){
         return jobAdvertisementService.add(jobAdvertisements);
     }
 
@@ -48,7 +48,7 @@ public class JobAdvertisementController {
     }
 
     @PutMapping("/update")
-    public Result updateJobAd(@RequestBody JobAdvertisementDTO jobAdvertisementDTO, @RequestParam(value = "id")String jobAdvId){
-        return jobAdvertisementService.updateJobAd(jobAdvertisementDTO, Integer.parseInt(jobAdvId));
+    public Result updateJobAd(@RequestBody JobAdvertisementUpdateDTO jobAdvertisementUpdateDTO, @RequestParam(value = "id")String jobAdvId){
+        return jobAdvertisementService.updateJobAd(jobAdvertisementUpdateDTO, Integer.parseInt(jobAdvId));
     }
 }

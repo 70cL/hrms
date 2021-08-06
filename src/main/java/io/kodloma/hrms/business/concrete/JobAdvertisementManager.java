@@ -7,19 +7,14 @@ import io.kodloma.hrms.core.Result;
 import io.kodloma.hrms.core.SuccessDataResult;
 import io.kodloma.hrms.dataAccessLayer.abstracts.JobAdvertisementsDao;
 import io.kodloma.hrms.entities.concrete.JobAdvertisements;
-import io.kodloma.hrms.entities.concrete.Resumes;
-import io.kodloma.hrms.entities.concrete.WorkingType;
-import io.kodloma.hrms.entities.dto.JobAdvertisementDTO;
 import io.kodloma.hrms.entities.dto.JobAdvertisementMapper;
+import io.kodloma.hrms.entities.dto.JobAdvertisementUpdateDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.PrePersist;
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService {
@@ -41,8 +36,13 @@ public class JobAdvertisementManager implements JobAdvertisementService {
     }
 
     @Override
-    public Result add(JobAdvertisements jobAdvertisement) {
-        return new SuccessDataResult<>("İlan kayıt edildi.",jobAdvertisementsDao.save(jobAdvertisement));
+    public Result add(JobAdvertisementUpdateDTO jobAdvertisement) {
+
+        JobAdvertisements jobAdvertisements = jobAdvertisementMapper.fromDto(jobAdvertisement);
+
+        jobAdvertisementsDao.save(jobAdvertisements);
+
+        return new SuccessDataResult<>("İlan kayıt edildi.", jobAdvertisements);
     }
 
     @Override
@@ -71,14 +71,14 @@ public class JobAdvertisementManager implements JobAdvertisementService {
     }
 
     @Override
-    public Result updateJobAd(JobAdvertisementDTO jobAdvertisementDTO, int jobAdvId) {
+    public Result updateJobAd(JobAdvertisementUpdateDTO jobAdvertisementUpdateDTO, int jobAdvId) {
 
         Optional<JobAdvertisements> cv;
 
         try {
             cv = jobAdvertisementsDao.findById(jobAdvId);
 
-            jobAdvertisementsDao.save(jobAdvertisementMapper.fromTwoOther(jobAdvertisementDTO, cv.get()));
+            jobAdvertisementsDao.save(jobAdvertisementMapper.fromTwoOther(jobAdvertisementUpdateDTO, cv.get()));
         }
         catch (NoSuchElementException noSuchElementException)
         {

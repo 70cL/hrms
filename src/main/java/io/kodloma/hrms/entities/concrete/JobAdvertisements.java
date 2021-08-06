@@ -1,16 +1,12 @@
 package io.kodloma.hrms.entities.concrete;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.boot.context.properties.bind.DefaultValue;
+import lombok.*;
+import net.bytebuddy.asm.Advice;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 
 @Data
@@ -32,15 +28,15 @@ public class JobAdvertisements {
     @JoinColumn(name = "working_location_id", referencedColumnName = "id")
     private WorkingLocation workingLocations;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "cities_id", referencedColumnName =  "id")
     private Cities cities;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "job_position_id", referencedColumnName =  "id")
     private JobPositions jobPositions;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
+    @ManyToOne( optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "employers_id", referencedColumnName =  "id")
     private Employers employers;
 

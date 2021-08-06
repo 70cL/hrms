@@ -1,32 +1,23 @@
 package io.kodloma.hrms.entities.dto;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.kodloma.hrms.entities.concrete.*;
-import io.swagger.models.auth.In;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
-import org.springframework.lang.Nullable;
-
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.Null;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobAdvertisementDTO {
+public class JobAdvertisementUpdateDTO {
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Integer id;
     private WorkingType workingType;
     private WorkingLocation workingLocations;
     @JsonIgnore
     private Employers employers;
     private Cities cities;
-    @JsonIgnore
     private JobPositions jobPositions;
     private String description;
     private Integer min_salary;
