@@ -20,23 +20,23 @@ public class JobAdvertisements {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "working_type_id", referencedColumnName = "id")
     private WorkingType workingType;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "working_location_id", referencedColumnName = "id")
     private WorkingLocation workingLocations;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "cities_id", referencedColumnName =  "id")
     private Cities cities;
 
-    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "job_position_id", referencedColumnName =  "id")
     private JobPositions jobPositions;
 
-    @ManyToOne( optional = false, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "employers_id", referencedColumnName =  "id")
     private Employers employers;
 

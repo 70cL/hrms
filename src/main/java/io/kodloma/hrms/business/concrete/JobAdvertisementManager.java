@@ -88,5 +88,20 @@ public class JobAdvertisementManager implements JobAdvertisementService {
         return new SuccessDataResult<>("İlan güncellendi", cv.get());
     }
 
+    @Override
+    public Result findById(int Id) {
 
+        Optional<JobAdvertisements> jobAdvertisements = jobAdvertisementsDao.findById(Id);
+        JobAdvertisements jobAdvById = new JobAdvertisements();
+
+        try{
+            jobAdvById = jobAdvertisements.orElseThrow();
+        }
+        catch (NoSuchElementException noSuchElementException){
+
+            new ErrorDataResult<>("Kayıt bulunamadı");
+        }
+
+        return new SuccessDataResult<>("İlan No : " + Id + "bulundu", jobAdvById);
+    }
 }

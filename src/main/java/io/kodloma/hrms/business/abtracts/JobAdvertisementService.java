@@ -14,4 +14,5 @@ public interface JobAdvertisementService {
     DataResult<List<JobAdvertisements>> findByActiveOrderByApplicationDeadline(boolean status);
     DataResult<List<JobAdvertisements>> findByActiveAndEmployers_CompanyName(boolean status, String companyName);
     Result updateJobAd(JobAdvertisementUpdateDTO jobAdvertisementDTO, int jobAdvId);
+    Result findById(int Id);
 }

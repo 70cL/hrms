@@ -51,4 +51,9 @@ public class JobAdvertisementController {
     public Result updateJobAd(@RequestBody JobAdvertisementUpdateDTO jobAdvertisementUpdateDTO, @RequestParam(value = "id")String jobAdvId){
         return jobAdvertisementService.updateJobAd(jobAdvertisementUpdateDTO, Integer.parseInt(jobAdvId));
     }
+
+    @GetMapping("/getById")
+    public Result findById(@RequestParam(value = "id") String id){
+        return jobAdvertisementService.findById(Integer.parseInt(id));
+    }
 }
