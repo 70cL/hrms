@@ -44,6 +44,7 @@ public class EmployersManager implements EmployersService {
     public Result add(Employers employers) {
         if(IsMatch(employers) && !IsDuplicate(employers)) {
             employersDao.save(employers);
+
             return new SuccessDataResult<>("başarı ile kaydedildi" ,employers);
         }
 
