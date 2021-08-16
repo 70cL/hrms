@@ -67,7 +67,7 @@ public class EmployersManager implements EmployersService {
             return new ErrorDataResult<>("Resim eklenemedi");
         }
 
-        return new SuccessDataResult<>("Resim eklendi", currentEmployer);
+        return new SuccessDataResult<>("Resim eklendi.", currentEmployer);
     }
 
 
