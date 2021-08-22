@@ -9,6 +9,8 @@ import io.kodloma.hrms.core.SuccessDataResult;
 import io.kodloma.hrms.dataAccessLayer.abstracts.CandidatesDao;
 import io.kodloma.hrms.entities.concrete.Candidates;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,21 +28,23 @@ public class CandidatesManager implements CandidatesService {
     }
 
     @Override
-    public DataResult<List<Candidates>> getAll() {
-        return new SuccessDataResult<>("Başarılı", candidatesDao.findAll());
+    public ResponseEntity<SuccessDataResult<List<Candidates>>> getAll() {
+        return new ResponseEntity<>(
+                new SuccessDataResult<>("Başarılı", candidatesDao.findAll()),
+                HttpStatus.OK);
     }
 
     @Override
-    public Result add(Candidates candidates) {
+    public ResponseEntity<DataResult<Candidates>> add(Candidates candidates) {
         if(isDupMail(candidates))
-            return new ErrorDataResult<>("mail sistemde mevcut", candidates);
+            return new ResponseEntity<>(new ErrorDataResult<>("mail sistemde mevcut", candidates),HttpStatus.CONFLICT);
         if (isDupTcno(candidates))
-            return new ErrorDataResult<>("tcno sistemde mevcut", candidates);
+            return new ResponseEntity<>(new ErrorDataResult<>("tcno sistemde mevcut", candidates),HttpStatus.CONFLICT);
         //if(!mernisService.ApiControl(candidates)) // çalıştırılamadı
             //return new ErrorDataResult<>("Tc no diğer bilgiler ile uyumsuz", candidates);
 
         candidatesDao.save(candidates);
-        return new SuccessDataResult<>("Başarılı", candidates);
+        return new ResponseEntity<>(new SuccessDataResult<>("Başarılı", candidates), HttpStatus.OK);
     }
 
     private boolean isDupMail(Candidates candidates){

@@ -7,6 +7,8 @@ import io.kodloma.hrms.core.SuccessDataResult;
 import io.kodloma.hrms.dataAccessLayer.abstracts.CitiesDao;
 import io.kodloma.hrms.entities.concrete.Cities;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +24,8 @@ public class CitiesManager implements CitiesService {
     }
 
     @Override
-    public DataResult<List<Cities>> getAll() {
-        return citiesDao.findAll().isEmpty() ? new ErrorDataResult<>("Şehir bulunamadı")
-                : new SuccessDataResult<>("Şehirler listelendi", citiesDao.findAll());
+    public ResponseEntity<DataResult<List<Cities>>> getAll() {
+        return citiesDao.findAll().isEmpty() ? new ResponseEntity<>(new ErrorDataResult<>("Şehir bulunamadı"), HttpStatus.NOT_FOUND)
+                 :new ResponseEntity<>(new SuccessDataResult<>("Şehirler listelendi", citiesDao.findAll()), HttpStatus.NOT_FOUND);
     }
 }
