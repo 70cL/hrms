@@ -40,8 +40,8 @@ public class CandidatesManager implements CandidatesService {
             return new ResponseEntity<>(new ErrorDataResult<>("mail sistemde mevcut", candidates),HttpStatus.CONFLICT);
         if (isDupTcno(candidates))
             return new ResponseEntity<>(new ErrorDataResult<>("tcno sistemde mevcut", candidates),HttpStatus.CONFLICT);
-        if(!mernisService.ApiControl(candidates))
-            return new ResponseEntity<>(new ErrorDataResult<>("geçerli bir TCNO giriniz", candidates),HttpStatus.CONFLICT);
+        //if(!mernisService.ApiControl(candidates))
+            //return new ResponseEntity<>(new ErrorDataResult<>("geçerli bir TCNO giriniz", candidates),HttpStatus.CONFLICT);
 
         candidatesDao.save(candidates);
         return new ResponseEntity<>(new SuccessDataResult<>("Başarılı", candidates), HttpStatus.OK);

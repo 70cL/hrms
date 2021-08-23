@@ -3,12 +3,14 @@ package io.kodloma.hrms.entities.concrete;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 @Data
 @Entity
 @Table(name = "users")
