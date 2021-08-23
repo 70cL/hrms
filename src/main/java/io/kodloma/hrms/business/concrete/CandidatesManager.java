@@ -18,8 +18,8 @@ import java.util.List;
 @Service
 public class CandidatesManager implements CandidatesService {
 
-    private CandidatesDao candidatesDao;
-    private MernisService<Candidates> mernisService;
+    private final CandidatesDao candidatesDao;
+    private final MernisService<Candidates> mernisService;
 
     @Autowired
     public CandidatesManager(CandidatesDao candidatesDao, MernisService<Candidates> mernisService){
@@ -28,7 +28,7 @@ public class CandidatesManager implements CandidatesService {
     }
 
     @Override
-    public ResponseEntity<SuccessDataResult<List<Candidates>>> getAll() {
+    public ResponseEntity<DataResult<List<Candidates>>> getAll() {
         return new ResponseEntity<>(
                 new SuccessDataResult<>("Başarılı", candidatesDao.findAll()),
                 HttpStatus.OK);
@@ -40,8 +40,8 @@ public class CandidatesManager implements CandidatesService {
             return new ResponseEntity<>(new ErrorDataResult<>("mail sistemde mevcut", candidates),HttpStatus.CONFLICT);
         if (isDupTcno(candidates))
             return new ResponseEntity<>(new ErrorDataResult<>("tcno sistemde mevcut", candidates),HttpStatus.CONFLICT);
-        //if(!mernisService.ApiControl(candidates)) // çalıştırılamadı
-            //return new ErrorDataResult<>("Tc no diğer bilgiler ile uyumsuz", candidates);
+        if(!mernisService.ApiControl(candidates))
+            return new ResponseEntity<>(new ErrorDataResult<>("geçerli bir TCNO giriniz", candidates),HttpStatus.CONFLICT);
 
         candidatesDao.save(candidates);
         return new ResponseEntity<>(new SuccessDataResult<>("Başarılı", candidates), HttpStatus.OK);

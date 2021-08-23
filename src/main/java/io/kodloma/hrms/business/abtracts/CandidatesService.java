@@ -9,6 +9,6 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface CandidatesService {
-    ResponseEntity<SuccessDataResult<List<Candidates>>> getAll();
+    ResponseEntity<DataResult<List<Candidates>>> getAll();
     ResponseEntity<DataResult<Candidates>> add(Candidates candidates);
 }

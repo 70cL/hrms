@@ -25,7 +25,7 @@ public class CandidatesController {
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<SuccessDataResult<List<Candidates>>> getAll(){
+    public ResponseEntity<DataResult<List<Candidates>>> getAll(){
         return candidatesService.getAll();
     }
 
