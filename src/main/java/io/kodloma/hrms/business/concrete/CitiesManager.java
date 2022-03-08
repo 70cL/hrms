@@ -26,6 +26,6 @@ public class CitiesManager implements CitiesService {
     @Override
     public ResponseEntity<DataResult<List<Cities>>> getAll() {
         return citiesDao.findAll().isEmpty() ? new ResponseEntity<>(new ErrorDataResult<>("Şehir bulunamadı"), HttpStatus.NOT_FOUND)
-                 :new ResponseEntity<>(new SuccessDataResult<>("Şehirler listelendi", citiesDao.findAll()), HttpStatus.ACCEPTED);
+                 :new ResponseEntity<>(new SuccessDataResult<>("Şehirler listelendi", citiesDao.findAll()), HttpStatus.NOT_FOUND);
     }
 }
